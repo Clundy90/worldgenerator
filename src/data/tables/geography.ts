@@ -38,6 +38,49 @@ export const EZ_WORLD_GEN = {
   ],
 };
 
+export const MYTH_GLOSSARY = {
+  "Single or no god":
+    "Faith is narrow in scope, centralized around a singular divine figure or replaced by secular institutions.",
+  "Two gods":
+    "Belief is balanced between rival or complementary divine forces, often shaping culture around opposition or duality.",
+  "Handful of gods":
+    "A small circle of deities governs major domains, giving worship a structured but still personal feel.",
+  "Pantheon of gods":
+    "Religion is broad, ceremonial, and full of overlapping rites dedicated to many specialized gods.",
+  "Multiple pantheons":
+    "Several traditions coexist, usually tied to regions, peoples, or political blocs with competing sacred histories.",
+  "Gods for everything":
+    "Spiritual life is highly granular, with divine patrons attached to nearly every task, trade, and phenomenon.",
+};
+
+export const TECH_GLOSSARY = {
+  "Ancient era":
+    "Stone, bronze, and early iron tools dominate. Knowledge is practical, local, and closely tied to oral tradition.",
+  "Classical era":
+    "Roads, scripts, formal armies, and civic engineering begin to support larger states and shared culture.",
+  "Medieval era":
+    "Regional craft, fortified settlements, and guild knowledge shape everyday life more than centralized industry.",
+  "High medieval era":
+    "Trade expands, institutions mature, and skilled labor becomes increasingly specialized across cities and strongholds.",
+  "Renaissance era":
+    "Discovery, navigation, art, and natural philosophy accelerate, pushing scholarship and invention into public life.",
+  "Industrial era":
+    "Mechanization, scaled production, and dense infrastructure rapidly reshape labor, travel, and warfare.",
+};
+
+export const MAGIC_GLOSSARY = {
+  None: "Magic is absent, forgotten, or dismissed as folklore. Mundane skill and material resources define power.",
+  "Very rare":
+    "Arcane effects exist, but most people may never witness them directly in their lifetime.",
+  Rare: "Magic is known and feared, but practitioners remain scarce and socially significant.",
+  Commonplace:
+    "Spellcraft is a routine part of life in key professions, settlements, and institutions.",
+  Widespread:
+    "Magic influences trade, defense, and daily survival across much of the world.",
+  Everywhere:
+    "Arcane power is embedded in the culture, environment, and assumptions of ordinary life.",
+};
+
 /**
  * REGIONAL FEATURES
  * The basic natural traits of a region.

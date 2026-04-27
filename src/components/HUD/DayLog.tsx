@@ -1,4 +1,5 @@
 import React from "react";
+import { CloudSun, Thermometer, TriangleAlert } from "lucide-react";
 
 interface DayLogProps {
   weather: string;
@@ -7,10 +8,6 @@ interface DayLogProps {
   effect: string;
 }
 
-/**
- * THE DAY LOG
- * A scrolling narrative ticker for current environmental status.
- */
 export const DayLog: React.FC<DayLogProps> = ({
   weather,
   severity,
@@ -22,51 +19,59 @@ export const DayLog: React.FC<DayLogProps> = ({
     minute: "2-digit",
   });
 
+  const items = [
+    {
+      label: "Weather",
+      value: weather,
+      icon: <CloudSun className="h-4 w-4 text-amber-200" />,
+    },
+    {
+      label: "Severity",
+      value: severity,
+      icon: <TriangleAlert className="h-4 w-4 text-rose-200" />,
+    },
+    {
+      label: "Temperature",
+      value: temp,
+      icon: <Thermometer className="h-4 w-4 text-cyan-200" />,
+    },
+  ];
+
   return (
-    <div className="bg-black/60 backdrop-blur-2xl border border-white/10 p-6 rounded-2xl shadow-2xl">
-      <div className="flex items-center gap-3 mb-6">
-        <div className="w-2 h-2 bg-orange-500 rounded-full animate-pulse" />
-        <h3 className="text-[10px] font-black text-white uppercase tracking-[0.4em]">
-          Atmospheric Log
-        </h3>
-        <span className="ml-auto text-[9px] font-mono text-zinc-500">
-          [{timestamp}]
-        </span>
+    <section className="rounded-[28px] border border-white/12 bg-slate-950/45 p-6 shadow-[0_18px_60px_rgba(15,23,42,0.28)] backdrop-blur-xl">
+      <div className="flex items-center justify-between gap-4">
+        <div>
+          <p className="text-xs font-semibold uppercase tracking-[0.28em] text-amber-200">
+            Daily Conditions
+          </p>
+          <h3 className="mt-2 text-2xl font-semibold text-white">
+            Current field report
+          </h3>
+        </div>
+        <p className="text-sm text-slate-400">{timestamp}</p>
       </div>
 
-      <div className="space-y-4">
-        <div className="border-l-2 border-orange-500/50 pl-4 py-1">
-          <span className="text-[9px] text-orange-500 uppercase font-bold block mb-1">
-            Environmental Scan
-          </span>
-          <p className="text-sm text-zinc-300 leading-relaxed italic">
-            Scanning reveals{" "}
-            <span className="text-white font-bold">
-              {severity} {weather}
-            </span>
-            . Local thermal readings stabilize at{" "}
-            <span className="text-white">{temp}</span>.
-          </p>
-        </div>
-
-        <div className="bg-orange-500/5 border border-orange-500/20 p-3 rounded-lg">
-          <span className="text-[9px] text-orange-400 uppercase font-bold block mb-1">
-            Biological Impact
-          </span>
-          <p className="text-xs text-orange-200/70 font-mono">
-            STATUS: {effect}
-          </p>
-        </div>
-      </div>
-
-      <div className="mt-6 flex gap-1">
-        {[...Array(12)].map((_, i) => (
+      <div className="mt-5 grid gap-3 md:grid-cols-3">
+        {items.map((item) => (
           <div
-            key={i}
-            className={`h-1 flex-1 ${i < 4 ? "bg-orange-500" : "bg-white/10"}`}
-          />
+            key={item.label}
+            className="rounded-2xl border border-white/8 bg-white/5 p-4"
+          >
+            <div className="flex items-center gap-2 text-sm text-slate-300">
+              {item.icon}
+              <span>{item.label}</span>
+            </div>
+            <p className="mt-3 text-lg font-medium text-white">{item.value}</p>
+          </div>
         ))}
       </div>
-    </div>
+
+      <div className="mt-5 rounded-2xl border border-amber-200/14 bg-amber-100/6 p-4">
+        <p className="text-xs uppercase tracking-[0.24em] text-amber-100/80">
+          Field effect
+        </p>
+        <p className="mt-2 text-sm leading-6 text-slate-200">{effect}</p>
+      </div>
+    </section>
   );
 };

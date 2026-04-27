@@ -1,5 +1,36 @@
 import { useState } from "react";
 import { WorldData } from "../data";
+import { getStonesForDrainage, getTreesForClimate } from "../data/catalog";
+
+const regionCompatibility = {
+  Arid: {
+    drainage: ["Severe", "Heavy", "Moderate", "Light"],
+    life: ["Dead", "Dry", "Average"],
+  },
+  Tropical: {
+    drainage: ["Heavy", "Moderate", "Light", "None", "Erosion"],
+    life: ["Average", "Fertile", "Flourishing", "Wilderness"],
+  },
+  Subtropical: {
+    drainage: ["Heavy", "Moderate", "Light", "Erosion"],
+    life: ["Average", "Fertile", "Flourishing", "Wilderness"],
+  },
+  Temperate: {
+    drainage: ["Severe", "Heavy", "Moderate", "Light", "None", "Erosion"],
+    life: ["Dry", "Average", "Fertile", "Flourishing", "Wilderness"],
+  },
+  Polar: {
+    drainage: ["Severe", "Heavy", "Moderate", "Light", "Erosion"],
+    life: ["Dead", "Dry", "Average"],
+  },
+  Aquatic: {
+    drainage: ["None", "Light", "Moderate", "Erosion"],
+    life: ["Average", "Fertile", "Flourishing", "Wilderness"],
+  },
+} as const;
+
+const proficiencyBonusForLevel = (level: number) =>
+  Math.floor((Math.max(1, level) - 1) / 4) + 2;
 
 export const useWorldEngine = () => {
   const [region, setRegion] = useState({
@@ -15,6 +46,7 @@ export const useWorldEngine = () => {
   });
 
   const rollDie = (sides: number) => Math.floor(Math.random() * sides);
+  const randomFrom = <T,>(items: T[]) => items[rollDie(items.length)];
 
   const generateNewRegion = () => {
     const planetIdx = rollDie(6);
@@ -22,21 +54,26 @@ export const useWorldEngine = () => {
     const techIdx = rollDie(6);
     const magicIdx = rollDie(6);
     const climateIdx = rollDie(6);
-    const drainageIdx = rollDie(6);
-    const lifeIdx = rollDie(6); // Added roll for life availability
 
     const selectedClimate = WorldData.CLIMATES[climateIdx].name;
-    const selectedDrainage = WorldData.DRAINAGE[drainageIdx].split(" ")[0];
-    const selectedLife = WorldData.LIFE_AVAILABILITY[lifeIdx];
+    const compatibility =
+      regionCompatibility[selectedClimate as keyof typeof regionCompatibility];
+    const compatibleDrainage = WorldData.DRAINAGE.filter((entry) =>
+      compatibility.drainage.includes(
+        entry.split(" ")[0] as (typeof compatibility.drainage)[number],
+      ),
+    );
+    const compatibleLife = WorldData.LIFE_AVAILABILITY.filter((entry) =>
+      compatibility.life.includes(
+        entry.split(" ")[0] as (typeof compatibility.life)[number],
+      ),
+    );
 
-    const trees =
-      WorldData.TREES_BY_CLIMATE[
-        selectedClimate as keyof typeof WorldData.TREES_BY_CLIMATE
-      ] || [];
-    const stones =
-      WorldData.STONES_BY_DRAINAGE[
-        selectedDrainage as keyof typeof WorldData.STONES_BY_DRAINAGE
-      ] || [];
+    const selectedDrainage = randomFrom(compatibleDrainage).split(" ")[0];
+    const selectedLife = randomFrom(compatibleLife);
+
+    const trees = getTreesForClimate(selectedClimate);
+    const stones = getStonesForDrainage(selectedDrainage);
 
     const newRegionData = {
       planet: WorldData.EZ_WORLD_GEN.planet[planetIdx],
@@ -56,5 +93,5 @@ export const useWorldEngine = () => {
     return newRegionData;
   };
 
-  return { region, generateNewRegion };
+  return { region, generateNewRegion, proficiencyBonusForLevel };
 };

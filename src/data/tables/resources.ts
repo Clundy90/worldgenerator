@@ -49,7 +49,7 @@ export const TREES_BY_CLIMATE = {
 
 /**
  * GLOSSARY DATA
- * Transcribed verbatim from the document.
+ * Transcribed verbatim from the document where available.
  */
 export const TREE_GLOSSARY = {
   Saguaro:
@@ -58,8 +58,19 @@ export const TREE_GLOSSARY = {
     "A tree that has vibrant purple flowers and withstands poor soil and heat well. Edible but well known anaphrodisiac. Beware.",
   Willow:
     "A tree with long flowing leaves and that tends to end up ridden with parasitic moss.",
+};
+
+export const STONE_GLOSSARY = {
   Diorite:
-    "Dark grey volcanic rock. Similar to granite, except this rock tends to be more… Let’s face it, it’s just a rock. Move on.",
+    "Dark grey volcanic rock. Similar to granite, except this stone trends a bit heavier and more speckled in appearance.",
+  Basalt:
+    "Dense volcanic stone formed by fast-cooling lava. Reliable for tools, fortifications, and heat-worn terrain.",
+  Flint:
+    "Hard sedimentary stone that breaks with a sharp edge. Commonly prized for sparks, blades, and arrowheads.",
+  Chert:
+    "Fine-grained silica stone often mistaken for flint. It fractures cleanly and is useful for cutting edges and fire-starting kits.",
+  Limestone:
+    "Soft, pale stone formed from marine deposits. Easy to carve and often linked to caves, cliffs, and old seabeds.",
 };
 
 export const STONES_BY_DRAINAGE = {

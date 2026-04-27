@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { WorldData } from "../data";
+import { getClimateLookupKey } from "../data/catalog";
 
 export const useWeatherEngine = () => {
   const [dailyStatus, setDailyStatus] = useState({
@@ -10,12 +11,14 @@ export const useWeatherEngine = () => {
   });
 
   const rollWeather = (currentClimate: string) => {
+    const climateKey = getClimateLookupKey(currentClimate);
+
     // --- TEMPERATURE LOGIC ---
     // Rule: Roll D6 + Climate Modifier
     const tempRoll = Math.floor(Math.random() * 6) + 1;
     const modifier =
       WorldData.TEMPERATURE_TRACKER.modifiers[
-        currentClimate as keyof typeof WorldData.TEMPERATURE_TRACKER.modifiers
+        climateKey as keyof typeof WorldData.TEMPERATURE_TRACKER.modifiers
       ] || 0;
 
     // Indexing the 10-level table (0-9)
@@ -34,7 +37,7 @@ export const useWeatherEngine = () => {
     // --- WEATHER TYPE LOGIC ---
     // This pulls from his Climate-specific Weather lists
     const weatherTable = WorldData.WEATHER_EFFECTS_BY_CLIMATE[
-      currentClimate as keyof typeof WorldData.WEATHER_EFFECTS_BY_CLIMATE
+      climateKey as keyof typeof WorldData.WEATHER_EFFECTS_BY_CLIMATE
     ] || ["Sunny"];
     const weatherIdx = Math.floor(Math.random() * weatherTable.length);
 

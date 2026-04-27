@@ -1,61 +1,52 @@
 import React from "react";
+import { Compass as CompassIcon } from "lucide-react";
 
 interface CompassProps {
   planet: string;
   mythology: string;
 }
 
-/**
- * THE COMPASS
- * Provides sector coordinates and planetary orientation.
- */
 export const Compass: React.FC<CompassProps> = ({ planet, mythology }) => {
   return (
-    <div className="bg-black/40 backdrop-blur-xl border border-white/10 p-5 rounded-xl shadow-2xl relative overflow-hidden group">
-      {/* Decorative scanning line */}
-      <div className="absolute inset-x-0 top-0 h-px bg-linear-to-r from-transparent via-cyan-500 to-transparent opacity-20 group-hover:opacity-100 transition-opacity" />
-
-      <div className="flex justify-between items-start mb-6">
+    <section className="rounded-[28px] border border-white/12 bg-slate-950/40 p-5 shadow-[0_18px_60px_rgba(15,23,42,0.24)] backdrop-blur-xl">
+      <div className="mb-5 flex items-start justify-between gap-4">
         <div>
-          <h3 className="text-[10px] font-black text-cyan-500 uppercase tracking-[0.3em]">
-            Navigation
-          </h3>
-          <p className="text-xl font-bold text-white tracking-tighter italic uppercase">
-            {planet}
+          <p className="text-xs font-semibold uppercase tracking-[0.28em] text-sky-300">
+            World Frame
           </p>
+          <h3 className="mt-2 text-2xl font-semibold text-white">{planet}</h3>
         </div>
-        <div className="text-right">
-          <span className="text-[9px] text-zinc-600 block uppercase">
-            Sector Origin
-          </span>
-          <span className="text-[10px] text-zinc-400 font-mono uppercase">
-            {mythology}
-          </span>
+        <div className="rounded-2xl border border-white/10 bg-white/5 p-3 text-sky-200">
+          <CompassIcon className="h-5 w-5" />
         </div>
       </div>
 
-      {/* The Visual "Compass" Ring */}
-      <div className="relative w-full aspect-square flex items-center justify-center border border-white/5 rounded-full mb-4">
-        <div className="absolute inset-0 border-2 border-dashed border-white/5 rounded-full animate-[spin_20s_linear_infinite]" />
-        <div className="text-[8px] text-zinc-700 font-mono">
-          <div className="absolute top-2 left-1/2 -translate-x-1/2">N</div>
-          <div className="absolute bottom-2 left-1/2 -translate-x-1/2">S</div>
-          <div className="absolute left-2 top-1/2 -translate-y-1/2">W</div>
-          <div className="absolute right-2 top-1/2 -translate-y-1/2">E</div>
+      <div className="grid gap-4 md:grid-cols-[minmax(0,1fr)_148px]">
+        <div className="rounded-2xl border border-white/8 bg-white/5 p-4">
+          <p className="text-xs uppercase tracking-[0.24em] text-slate-400">
+            Dominant mythic axis
+          </p>
+          <p className="mt-2 text-base leading-7 text-slate-100">{mythology}</p>
         </div>
-        <div className="w-1 h-1 bg-cyan-500 rounded-full shadow-[0_0_10px_cyan]" />
-      </div>
 
-      <div className="grid grid-cols-2 gap-2 mt-4">
-        <div className="bg-white/5 p-2 rounded border border-white/5">
-          <span className="text-[8px] text-zinc-500 block uppercase">Lat</span>
-          <span className="text-[10px] text-white font-mono">42.08.12</span>
-        </div>
-        <div className="bg-white/5 p-2 rounded border border-white/5">
-          <span className="text-[8px] text-zinc-500 block uppercase">Long</span>
-          <span className="text-[10px] text-white font-mono">19.04.88</span>
+        <div className="relative mx-auto flex aspect-square w-full max-w-[148px] items-center justify-center rounded-full border border-white/12 bg-[radial-gradient(circle_at_center,rgba(56,189,248,0.22),rgba(15,23,42,0)_58%)]">
+          <div className="absolute inset-3 rounded-full border border-dashed border-sky-200/20" />
+          <div className="absolute inset-7 rounded-full border border-white/10" />
+          <div className="absolute top-3 text-[10px] uppercase tracking-[0.28em] text-slate-400">
+            N
+          </div>
+          <div className="absolute bottom-3 text-[10px] uppercase tracking-[0.28em] text-slate-400">
+            S
+          </div>
+          <div className="absolute left-3 text-[10px] uppercase tracking-[0.28em] text-slate-400">
+            W
+          </div>
+          <div className="absolute right-3 text-[10px] uppercase tracking-[0.28em] text-slate-400">
+            E
+          </div>
+          <div className="h-3 w-3 rounded-full bg-sky-300 shadow-[0_0_24px_rgba(125,211,252,0.8)]" />
         </div>
       </div>
-    </div>
+    </section>
   );
 };

@@ -5,6 +5,9 @@ export const TEMPERATURE_TRACKER = {
     Subtropical: -1,
     Temperate: 0,
     Arctic: 2,
+    Polar: 2,
+    Oceanic: 0,
+    Aquatic: 0,
   },
   levels: [
     {
@@ -12,11 +15,11 @@ export const TEMPERATURE_TRACKER = {
       effect:
         "Healing is not possible. You gain one level of exhaustion for every hour in this temperature.",
     },
-    { name: "Parching", effect: "Rest is not possible. Healing reduced by ½." },
+    { name: "Parching", effect: "Rest is not possible. Healing reduced by half." },
     {
       name: "Hot",
       effect:
-        "Rest is not possible without gear or magic. Healing reduced by ½ if exposed to the elements.",
+        "Rest is not possible without gear or magic. Healing reduced by half if exposed to the elements.",
     },
     {
       name: "Warm",
@@ -35,21 +38,20 @@ export const TEMPERATURE_TRACKER = {
     {
       name: "Freezing",
       effect:
-        "Rest is not possible without gear or magic. Healing reduced by ½ if exposed to the elements.",
+        "Rest is not possible without gear or magic. Healing reduced by half if exposed to the elements.",
     },
-    { name: "Glacial", effect: "Rest is not possible. Healing reduced by ½." },
+    { name: "Glacial", effect: "Rest is not possible. Healing reduced by half." },
   ],
 };
 
-// Add this to your existing daily.ts file
 export const WEATHER_EFFECTS_BY_CLIMATE = {
   Arid: [
     "Sunny",
     "Partly cloudy",
-    "Heat Wave",
+    "Heat wave",
     "Windy",
     "Sandstorm",
-    "Unusual Weather",
+    "Unusual weather",
   ],
   Tropical: [
     "Sunny",
@@ -57,7 +59,7 @@ export const WEATHER_EFFECTS_BY_CLIMATE = {
     "Fog",
     "Light rain",
     "Heavy rain",
-    "Unusual Weather",
+    "Unusual weather",
   ],
   Subtropical: [
     "Sunny",
@@ -65,7 +67,7 @@ export const WEATHER_EFFECTS_BY_CLIMATE = {
     "Cloudy",
     "Rain",
     "Thunderstorm",
-    "Unusual Weather",
+    "Unusual weather",
   ],
   Temperate: [
     "Sunny",
@@ -73,7 +75,7 @@ export const WEATHER_EFFECTS_BY_CLIMATE = {
     "Cloudy",
     "Fog",
     "Thunderstorm",
-    "Unusual Weather",
+    "Unusual weather",
   ],
   Arctic: [
     "Sunny",
@@ -81,14 +83,30 @@ export const WEATHER_EFFECTS_BY_CLIMATE = {
     "Light snow",
     "Snow",
     "Heavy snow",
-    "Unusual Weather",
+    "Unusual weather",
+  ],
+  Polar: [
+    "Sunny",
+    "Cloudy",
+    "Light snow",
+    "Snow",
+    "Heavy snow",
+    "Unusual weather",
   ],
   Oceanic: [
     "Still waters",
     "Fair waters",
     "Choppy waters",
     "Rain",
-    "Heavy Rain",
-    "Unusual Weather",
+    "Heavy rain",
+    "Unusual weather",
+  ],
+  Aquatic: [
+    "Still waters",
+    "Fair waters",
+    "Choppy waters",
+    "Rain",
+    "Heavy rain",
+    "Unusual weather",
   ],
 };
