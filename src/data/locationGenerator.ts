@@ -1,4 +1,4 @@
-type RegionContext = {
+export type RegionContext = {
   planet: string;
   mythology: string;
   tech: string;

@@ -38,26 +38,26 @@ export const DayLog: React.FC<DayLogProps> = ({
   ];
 
   return (
-    <section className="rounded-[28px] border border-white/12 bg-slate-950/45 p-6 shadow-[0_18px_60px_rgba(15,23,42,0.28)] backdrop-blur-xl">
+    <section className="rounded-[28px] border border-white/12 bg-[linear-gradient(160deg,rgba(14,165,233,0.14),rgba(251,191,36,0.12),rgba(15,23,42,0.72))] p-6 shadow-[0_18px_60px_rgba(15,23,42,0.28)] backdrop-blur-xl">
       <div className="flex items-center justify-between gap-4">
         <div>
-          <p className="text-xs font-semibold uppercase tracking-[0.28em] text-amber-200">
+          <p className="text-xs font-semibold uppercase tracking-[0.28em] text-amber-100">
             Daily Conditions
           </p>
           <h3 className="mt-2 text-2xl font-semibold text-white">
             Current field report
           </h3>
         </div>
-        <p className="text-sm text-slate-400">{timestamp}</p>
+        <p className="text-sm text-slate-200/75">{timestamp}</p>
       </div>
 
       <div className="mt-5 grid gap-3 md:grid-cols-3">
         {items.map((item) => (
           <div
             key={item.label}
-            className="rounded-2xl border border-white/8 bg-white/5 p-4"
+            className="rounded-2xl border border-white/10 bg-[linear-gradient(145deg,rgba(255,255,255,0.12),rgba(15,23,42,0.36))] p-4"
           >
-            <div className="flex items-center gap-2 text-sm text-slate-300">
+            <div className="flex items-center gap-2 text-sm text-slate-100/85">
               {item.icon}
               <span>{item.label}</span>
             </div>
@@ -66,11 +66,11 @@ export const DayLog: React.FC<DayLogProps> = ({
         ))}
       </div>
 
-      <div className="mt-5 rounded-2xl border border-amber-200/14 bg-amber-100/6 p-4">
-        <p className="text-xs uppercase tracking-[0.24em] text-amber-100/80">
+      <div className="mt-5 rounded-2xl border border-amber-100/14 bg-[linear-gradient(145deg,rgba(251,191,36,0.16),rgba(15,23,42,0.28))] p-4">
+        <p className="text-xs uppercase tracking-[0.24em] text-amber-50/85">
           Field effect
         </p>
-        <p className="mt-2 text-sm leading-6 text-slate-200">{effect}</p>
+        <p className="mt-2 text-sm leading-6 text-slate-100">{effect}</p>
       </div>
     </section>
   );

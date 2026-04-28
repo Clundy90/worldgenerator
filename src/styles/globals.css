@@ -15,10 +15,7 @@ body {
   min-height: 100vh;
   margin: 0;
   font-family: var(--font-body);
-  background:
-    radial-gradient(circle at top left, rgba(56, 189, 248, 0.08), transparent 28%),
-    radial-gradient(circle at top right, rgba(251, 191, 36, 0.08), transparent 24%),
-    linear-gradient(180deg, #081120 0%, #0f172a 45%, #111827 100%);
+  background: #081120;
 }
 
 body::before {
@@ -27,9 +24,9 @@ body::before {
   inset: 0;
   pointer-events: none;
   background-image:
-    linear-gradient(rgba(148, 163, 184, 0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(148, 163, 184, 0.05) 1px, transparent 1px);
-  background-size: 42px 42px;
+    linear-gradient(rgba(148, 163, 184, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(148, 163, 184, 0.04) 1px, transparent 1px);
+  background-size: 46px 46px;
   mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.45), transparent 88%);
 }
 
@@ -44,4 +41,277 @@ button {
 ::selection {
   background: rgba(125, 211, 252, 0.25);
   color: #f8fafc;
+}
+
+.ambient-preview {
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+.ambient-preview-sheen {
+  background:
+    linear-gradient(120deg, transparent 0%, rgba(255, 255, 255, 0.08) 35%, transparent 72%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.05), transparent 68%);
+  animation: sheen-drift 12s linear infinite;
+}
+
+.ambient-dunes {
+  background:
+    linear-gradient(180deg, rgba(255, 244, 214, 0.08), transparent 24%),
+    repeating-linear-gradient(
+      -10deg,
+      rgba(245, 158, 11, 0.09) 0px,
+      rgba(245, 158, 11, 0.09) 3px,
+      transparent 3px,
+      transparent 24px
+    );
+  animation: dune-drift 18s linear infinite;
+}
+
+.ambient-canopy {
+  background:
+    linear-gradient(180deg, rgba(187, 247, 208, 0.05), transparent 22%),
+    repeating-linear-gradient(
+      90deg,
+      rgba(16, 185, 129, 0.08) 0px,
+      rgba(16, 185, 129, 0.08) 5px,
+      transparent 5px,
+      transparent 42px
+    );
+  animation: canopy-sway 20s ease-in-out infinite alternate;
+}
+
+.ambient-monsoon {
+  background:
+    linear-gradient(180deg, rgba(165, 243, 252, 0.06), transparent 26%),
+    repeating-linear-gradient(
+      -18deg,
+      rgba(34, 211, 238, 0.08) 0px,
+      rgba(34, 211, 238, 0.08) 2px,
+      transparent 2px,
+      transparent 30px
+    );
+  animation: monsoon-drift 14s linear infinite;
+}
+
+.ambient-meadow {
+  background:
+    linear-gradient(180deg, rgba(217, 249, 157, 0.05), transparent 22%),
+    repeating-linear-gradient(
+      0deg,
+      rgba(74, 222, 128, 0.07) 0px,
+      rgba(74, 222, 128, 0.07) 2px,
+      transparent 2px,
+      transparent 28px
+    );
+  animation: meadow-roll 16s ease-in-out infinite alternate;
+}
+
+.ambient-frost {
+  background:
+    linear-gradient(180deg, rgba(224, 242, 254, 0.08), transparent 18%),
+    repeating-linear-gradient(
+      135deg,
+      rgba(191, 219, 254, 0.08) 0px,
+      rgba(191, 219, 254, 0.08) 2px,
+      transparent 2px,
+      transparent 26px
+    );
+  animation: frost-shift 14s linear infinite;
+}
+
+.ambient-tide {
+  background:
+    linear-gradient(180deg, rgba(153, 246, 228, 0.06), transparent 22%),
+    repeating-linear-gradient(
+      0deg,
+      rgba(45, 212, 191, 0.07) 0px,
+      rgba(45, 212, 191, 0.07) 3px,
+      transparent 3px,
+      transparent 22px
+    );
+  animation: tide-rise 12s linear infinite;
+}
+
+.ambient-rain {
+  background:
+    repeating-linear-gradient(
+      -18deg,
+      rgba(255, 255, 255, 0.08) 0px,
+      rgba(255, 255, 255, 0.08) 2px,
+      transparent 2px,
+      transparent 24px
+    );
+  animation: rainfall 0.9s linear infinite;
+}
+
+.ambient-snow {
+  background-image:
+    radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.22) 0 2px, transparent 2px),
+    radial-gradient(circle at 70% 35%, rgba(255, 255, 255, 0.18) 0 1.8px, transparent 1.8px),
+    radial-gradient(circle at 40% 70%, rgba(255, 255, 255, 0.2) 0 2.2px, transparent 2.2px);
+  background-size: 180px 180px;
+  animation: snowfall 12s linear infinite;
+}
+
+.ambient-heat {
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.05), transparent 40%),
+    repeating-linear-gradient(
+      90deg,
+      transparent 0px,
+      rgba(255, 255, 255, 0.04) 18px,
+      transparent 36px
+    );
+  animation: heat-shimmer 5s ease-in-out infinite;
+}
+
+.ambient-wave {
+  background:
+    repeating-linear-gradient(
+      0deg,
+      rgba(255, 255, 255, 0.05) 0px,
+      rgba(255, 255, 255, 0.05) 2px,
+      transparent 2px,
+      transparent 18px
+    );
+  animation: wave-swell 4s ease-in-out infinite;
+}
+
+.ambient-mist {
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.08), transparent 45%),
+    linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.05), transparent);
+  animation: mist-drift 10s ease-in-out infinite alternate;
+}
+
+.ambient-wind {
+  background:
+    linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.05) 50%, transparent 100%);
+  animation: wind-pass 8s ease-in-out infinite;
+}
+
+@keyframes sheen-drift {
+  0% {
+    transform: translateX(-18%);
+  }
+  100% {
+    transform: translateX(18%);
+  }
+}
+
+@keyframes dune-drift {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 180px 0;
+  }
+}
+
+@keyframes canopy-sway {
+  0% {
+    transform: translateX(-2%);
+  }
+  100% {
+    transform: translateX(2%);
+  }
+}
+
+@keyframes monsoon-drift {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 160px 80px;
+  }
+}
+
+@keyframes meadow-roll {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(8px);
+  }
+}
+
+@keyframes frost-shift {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 80px 80px;
+  }
+}
+
+@keyframes tide-rise {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 0 120px;
+  }
+}
+
+@keyframes rainfall {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 0 120px;
+  }
+}
+
+@keyframes snowfall {
+  0% {
+    background-position: 0 0, 0 0, 0 0;
+  }
+  100% {
+    background-position: 0 160px, -18px 180px, 16px 190px;
+  }
+}
+
+@keyframes heat-shimmer {
+  0%,
+  100% {
+    transform: scaleY(1) translateX(0);
+  }
+  50% {
+    transform: scaleY(1.03) translateX(6px);
+  }
+}
+
+@keyframes wave-swell {
+  0%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.55;
+  }
+  50% {
+    transform: translateY(8px);
+    opacity: 0.78;
+  }
+}
+
+@keyframes mist-drift {
+  0% {
+    transform: translateX(-2%);
+  }
+  100% {
+    transform: translateX(2%);
+  }
+}
+
+@keyframes wind-pass {
+  0% {
+    transform: translateX(-12%);
+    opacity: 0.22;
+  }
+  50% {
+    opacity: 0.36;
+  }
+  100% {
+    transform: translateX(12%);
+    opacity: 0.22;
+  }
 }

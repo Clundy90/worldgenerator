@@ -41,12 +41,15 @@ export const useWeatherEngine = () => {
     ] || ["Sunny"];
     const weatherIdx = Math.floor(Math.random() * weatherTable.length);
 
-    setDailyStatus({
+    const nextStatus = {
       tempName: selectedTemp.name,
       tempEffect: selectedTemp.effect,
       severity: severityLabel,
       weatherEffect: weatherTable[weatherIdx],
-    });
+    };
+
+    setDailyStatus(nextStatus);
+    return nextStatus;
   };
 
   return { dailyStatus, rollWeather };
