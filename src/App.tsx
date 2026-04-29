@@ -54,15 +54,12 @@ const App: React.FC = () => {
     support: number;
     total: number;
   } | null>(null);
-  const [activeInspection, setActiveInspection] = useState<ActiveInspection | null>(
-    null,
-  );
-  const [activeLocation, setActiveLocation] = useState<GeneratedLocation | null>(
-    null,
-  );
-  const [frontierThreads, setFrontierThreads] = useState<FrontierThreads | null>(
-    null,
-  );
+  const [activeInspection, setActiveInspection] =
+    useState<ActiveInspection | null>(null);
+  const [activeLocation, setActiveLocation] =
+    useState<GeneratedLocation | null>(null);
+  const [frontierThreads, setFrontierThreads] =
+    useState<FrontierThreads | null>(null);
   const [nameSeeds, setNameSeeds] = useState<NameSeeds | null>(null);
 
   const handleInspect = (name: string) => {
@@ -197,7 +194,10 @@ const App: React.FC = () => {
   ];
 
   const climateDescription = getClimateDescription(region.climate);
-  const climateTheme = getClimateTheme(region.climate, dailyStatus.weatherEffect);
+  const climateTheme = getClimateTheme(
+    region.climate,
+    dailyStatus.weatherEffect,
+  );
   const localInputs = [
     ...region.localTrees.slice(0, 3),
     ...region.localStones.slice(0, 3),
@@ -210,14 +210,22 @@ const App: React.FC = () => {
     <div className="min-h-screen bg-transparent text-slate-100">
       <div className="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
         <div className={`absolute inset-0 ${climateTheme.ambientBase}`} />
-        <div className={`absolute inset-0 opacity-95 ${climateTheme.ambientTexture}`} />
-        <div className={`absolute inset-0 opacity-80 ${climateTheme.weatherMotion}`} />
-        <div className={`absolute inset-0 opacity-70 ${climateTheme.colorBursts}`} />
-        <div className={`absolute inset-x-0 bottom-0 h-[45vh] ${climateTheme.horizon}`} />
+        <div
+          className={`absolute inset-0 opacity-95 ${climateTheme.ambientTexture}`}
+        />
+        <div
+          className={`absolute inset-0 opacity-80 ${climateTheme.weatherMotion}`}
+        />
+        <div
+          className={`absolute inset-0 opacity-70 ${climateTheme.colorBursts}`}
+        />
+        <div
+          className={`absolute inset-x-0 bottom-0 h-[45vh] ${climateTheme.horizon}`}
+        />
         <div className="absolute inset-x-0 top-0 h-80 bg-[linear-gradient(180deg,rgba(255,255,255,0.12),transparent_72%)]" />
       </div>
 
-      <div className="mx-auto flex min-h-screen w-full max-w-[1600px] flex-col px-4 pb-6 pt-4 sm:px-6 lg:px-8">
+      <div className="mx-auto flex min-h-screen w-full max-w-400 flex-col px-4 pb-6 pt-4 sm:px-6 lg:px-8">
         <header
           className={`rounded-[30px] border bg-slate-950/50 px-5 py-4 backdrop-blur-xl ${climateTheme.headerGlow}`}
         >
@@ -227,7 +235,7 @@ const App: React.FC = () => {
                 World Generator
               </p>
               <div className="mt-2 flex flex-wrap items-end gap-x-4 gap-y-2">
-                <h1 className="font-[var(--font-display)] text-4xl leading-none text-white sm:text-5xl">
+                <h1 className="font-(--font-display)] text-4xl leading-none text-white sm:text-5xl">
                   Survey the next frontier
                 </h1>
                 <span className="rounded-full border border-white/12 bg-white/12 px-3 py-1 text-xs uppercase tracking-[0.28em] text-slate-100">
@@ -260,7 +268,7 @@ const App: React.FC = () => {
                 <p className="text-sm uppercase tracking-[0.28em] text-sky-50/85">
                   Planet form
                 </p>
-                <h2 className="mt-3 font-[var(--font-display)] text-3xl leading-tight text-white">
+                <h2 className="mt-3 font-(--font-display)] text-3xl leading-tight text-white">
                   {region.planet || "Awaiting scan"}
                 </h2>
                 <button
@@ -305,13 +313,15 @@ const App: React.FC = () => {
 
           <section className="space-y-6">
             <section
-              className={`rounded-[32px] border border-white/12 p-6 shadow-[0_22px_80px_rgba(15,23,42,0.28)] backdrop-blur-xl ${climateTheme.climatePanel}`}
+              className={`rounded-4xl border border-white/12 p-6 shadow-[0_22px_80px_rgba(15,23,42,0.28)] backdrop-blur-xl ${climateTheme.climatePanel}`}
             >
-              <p className={`text-xs uppercase tracking-[0.32em] ${climateTheme.accentText}`}>
+              <p
+                className={`text-xs uppercase tracking-[0.32em] ${climateTheme.accentText}`}
+              >
                 Climate brief
               </p>
               <div className="mt-4">
-                <h2 className="font-[var(--font-display)] text-5xl leading-none text-white sm:text-6xl">
+                <h2 className="font-(--font-display)] text-5xl leading-none text-white sm:text-6xl">
                   {region.climate || "Unknown"}
                 </h2>
                 <p className="mt-3 max-w-2xl text-base leading-7 text-slate-50/95">
@@ -328,7 +338,7 @@ const App: React.FC = () => {
               effect={dailyStatus.tempEffect}
             />
 
-            <section className="rounded-[32px] border border-white/12 bg-[linear-gradient(160deg,rgba(37,99,235,0.12),rgba(15,23,42,0.7),rgba(14,165,233,0.12))] p-6 shadow-[0_22px_80px_rgba(15,23,42,0.28)] backdrop-blur-xl">
+            <section className="rounded-4xl border border-white/12 bg-[linear-gradient(160deg,rgba(37,99,235,0.12),rgba(15,23,42,0.7),rgba(14,165,233,0.12))] p-6 shadow-[0_22px_80px_rgba(15,23,42,0.28)] backdrop-blur-xl">
               <div className="flex items-center gap-2 text-sm uppercase tracking-[0.28em] text-slate-200">
                 <Sparkles className="h-4 w-4 text-sky-100" />
                 Inspection archive
@@ -340,7 +350,7 @@ const App: React.FC = () => {
                     <span className="rounded-full border border-sky-100/20 bg-sky-300/18 px-3 py-1 text-xs uppercase tracking-[0.24em] text-sky-50">
                       {activeInspection.category}
                     </span>
-                    <h3 className="font-[var(--font-display)] text-4xl leading-none text-white">
+                    <h3 className="font-(--font-display)] text-4xl leading-none text-white">
                       {activeInspection.name}
                     </h3>
                   </div>
@@ -362,8 +372,10 @@ const App: React.FC = () => {
                     </div>
                   ) : null}
 
+                  <DiceTray />
+
                   {activeInspection.craftables.length ? (
-                    <div className="rounded-[24px] border border-emerald-200/14 bg-[linear-gradient(145deg,rgba(16,185,129,0.2),rgba(21,128,61,0.14),rgba(15,23,42,0.4))] p-5">
+                    <div className="rounded-3xl border border-emerald-200/14 bg-[linear-gradient(145deg,rgba(16,185,129,0.2),rgba(21,128,61,0.14),rgba(15,23,42,0.4))] p-5">
                       <div className="flex items-center gap-2 text-sm uppercase tracking-[0.24em] text-emerald-50">
                         <Gem className="h-4 w-4" />
                         Crafting potential
@@ -383,7 +395,8 @@ const App: React.FC = () => {
                 </div>
               ) : (
                 <div className="mt-5 rounded-[28px] border border-dashed border-white/14 bg-white/6 px-6 py-10 text-center text-slate-300">
-                  Select any climate, world trait, tree, or stone to inspect its lore and context here.
+                  Select any climate, world trait, tree, or stone to inspect its
+                  lore and context here.
                 </div>
               )}
             </section>
@@ -394,7 +407,7 @@ const App: React.FC = () => {
                 Crafting table
               </div>
 
-              <div className="mt-5 flex items-end justify-between gap-4 rounded-[24px] border border-amber-100/14 bg-[linear-gradient(145deg,rgba(251,191,36,0.2),rgba(234,88,12,0.18),rgba(15,23,42,0.28))] p-5">
+              <div className="mt-5 flex items-end justify-between gap-4 rounded-3xl border border-amber-100/14 bg-[linear-gradient(145deg,rgba(251,191,36,0.2),rgba(234,88,12,0.18),rgba(15,23,42,0.28))] p-5">
                 <div>
                   <p className="text-xs uppercase tracking-[0.24em] text-amber-50/85">
                     Progress points
@@ -423,7 +436,9 @@ const App: React.FC = () => {
                   <p className="text-xs uppercase tracking-[0.24em] text-slate-200/75">
                     Base session
                   </p>
-                  <p className="mt-2 text-sm text-white">{rules.default_rate}</p>
+                  <p className="mt-2 text-sm text-white">
+                    {rules.default_rate}
+                  </p>
                   <p className="mt-2 text-xs leading-5 text-slate-200/70">
                     {rules.material_cost}
                   </p>
@@ -436,8 +451,8 @@ const App: React.FC = () => {
                     Level {masteryLevel} uses {getDieForLevel(masteryLevel)}
                   </p>
                   <p className="mt-2 text-xs leading-5 text-slate-200/70">
-                    Workshop support currently adds {supportBonus} points to each
-                    session.
+                    Workshop support currently adds {supportBonus} points to
+                    each session.
                   </p>
                 </div>
               </div>
@@ -446,19 +461,25 @@ const App: React.FC = () => {
                 <p className="text-sm text-slate-50">Mastery level</p>
                 <div className="flex items-center gap-2">
                   <button
-                    onClick={() => setMasteryLevel((level) => Math.max(1, level - 1))}
+                    onClick={() =>
+                      setMasteryLevel((level) => Math.max(1, level - 1))
+                    }
                     className="h-9 w-9 rounded-xl border border-white/12 bg-black/18 text-lg text-white transition hover:bg-black/28"
                   >
                     -
                   </button>
                   <div className="min-w-28 rounded-xl border border-white/12 bg-black/18 px-3 py-2 text-center">
-                    <p className="text-sm font-medium text-white">Level {masteryLevel}</p>
+                    <p className="text-sm font-medium text-white">
+                      Level {masteryLevel}
+                    </p>
                     <p className="text-xs uppercase tracking-[0.24em] text-slate-200/75">
                       Roll {getDieForLevel(masteryLevel)}
                     </p>
                   </div>
                   <button
-                    onClick={() => setMasteryLevel((level) => Math.min(20, level + 1))}
+                    onClick={() =>
+                      setMasteryLevel((level) => Math.min(20, level + 1))
+                    }
                     className="h-9 w-9 rounded-xl border border-white/12 bg-black/18 text-lg text-white transition hover:bg-black/28"
                   >
                     +
@@ -512,7 +533,9 @@ const App: React.FC = () => {
                     </div>
                     <button
                       onClick={() =>
-                        setSupportCrew((count) => Math.min(assistantCap, count + 1))
+                        setSupportCrew((count) =>
+                          Math.min(assistantCap, count + 1),
+                        )
                       }
                       className="h-9 w-9 rounded-xl border border-white/12 bg-black/18 text-lg text-white transition hover:bg-black/28"
                     >
@@ -521,7 +544,8 @@ const App: React.FC = () => {
                   </div>
                 </div>
                 <p className="mt-3 text-xs leading-5 text-slate-200/70">
-                  Assistant capacity scales with level to echo the lead artisan rule.
+                  Assistant capacity scales with level to echo the lead artisan
+                  rule.
                 </p>
               </div>
 
@@ -593,9 +617,10 @@ const App: React.FC = () => {
               onReroll={() => handleGenerateThreads()}
             />
 
-            <NameSeedsCard seeds={nameSeeds} onReroll={() => handleGenerateNames()} />
-
-            <DiceTray />
+            <NameSeedsCard
+              seeds={nameSeeds}
+              onReroll={() => handleGenerateNames()}
+            />
           </section>
         </main>
       </div>
